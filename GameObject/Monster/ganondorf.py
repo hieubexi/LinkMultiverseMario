@@ -42,7 +42,7 @@ class Ganondorf(Monster):
         self.state = IDLE
         self.orig_speed = 2 * scale
         self.speed = self.orig_speed
-        self.health = 5
+        self.health = 10
         self.rotation = 0
         self.jump_speed = -10 * scale
 

@@ -105,18 +105,6 @@ def __handle_mouse_events(event_args: pygame.event):
 
 # === Controller input === #
 
-def __handle_controller_events(event_args: pygame.event):
-    responsive_buttons = [0, 1, 2, 3, 11, 12, 13, 14]
-
-    # Button down event
-    if event_args.type == pygame.JOYBUTTONDOWN:
-        if event_args.button in responsive_buttons:
-            jc.__nintendo_switch_button_status[event_args.button] = True
-
-    # Button up event
-    elif event_args.type == pygame.JOYBUTTONUP:
-        if event_args.button in responsive_buttons:
-            jc.__nintendo_switch_button_status[event_args.button] = False
 
 
 # Application entry point
@@ -130,7 +118,7 @@ async def main():
         for event in pygame.event.get():
             __handle_keyboard_events(event)
             __handle_mouse_events(event)
-            __handle_controller_events(event)
+
 
 
             # Quit game

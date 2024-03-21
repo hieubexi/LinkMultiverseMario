@@ -56,8 +56,11 @@ def show_paused_screen(active_level) -> string:
     if pause_button.clicked():
         active_level.level_music.fadeout(500)
         return "MAIN_MENU"
-
-    if (pause_key_pressed() or continue_button.clicked()) and pause_screen_timer >= pause_screen_delay:
+    if restart_button.clicked():
+        active_level.level_music.fadeout(500)
+        active_level.link.lives = 3
+        return "TRANSITION_FROM_MAIN_MENU"
+    if (pause_key_pressed() ) and pause_screen_timer >= pause_screen_delay:
         pause_screen_timer = 0
         return "GAME"
 

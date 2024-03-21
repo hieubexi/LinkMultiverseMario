@@ -44,20 +44,6 @@ def show_about_screen(main_menu_music) -> string:
         "Name"
     ]
 
-
-    # Show correct message
-    # text(starting_messages[0],
-    #      int(scale * 20),
-    #      (0, 0, 0),
-    #      screen_width / 2,
-    #      250,
-    #      "fonts/pixel.ttf")
-    # text(starting_messages[1],
-    #      int(scale * 20),
-    #      (0, 0, 0),
-    #      screen_width / 2,
-    #      350,
-    #      "fonts/pixel.ttf")
     for i in range(0, len(starting_messages)):
         text(starting_messages[i],
          int(scale * 20),

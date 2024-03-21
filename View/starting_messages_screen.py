@@ -38,7 +38,7 @@ def show_starting_messages() -> string:
          "fonts/pixel.ttf")
 
     # Show skip option
-    text("PRESS SPACE/X TO SKIP",
+    text("PRESS SPACE TO SKIP",
          int(scale * 15),
          (150, 150, 150),
          screen_width / 2,

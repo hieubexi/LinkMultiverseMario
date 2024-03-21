@@ -5,7 +5,7 @@ from UI.button import Button
 
 # UI components
 start_button = Button(
-    pos=(screen_width / 2, screen_height / 2 - 20 * scale ),
+    pos=(200, screen_height / 2 - 126),
     w=275, 
     h=50,
     content="START NEW GAME", 
@@ -16,7 +16,7 @@ start_button = Button(
     border=False)
 
 settings_button = Button(
-    pos=(screen_width / 2, screen_height / 2 + 50 * scale),
+    pos=(200, screen_height / 2  - 56 ),
     w=275, 
     h=50,
     content="SETTINGS", 
@@ -26,7 +26,7 @@ settings_button = Button(
     hover_color=(0, 34, 77),
     border=False)
 about_button = Button(
-    pos=(screen_width / 2, screen_height / 2 + 120 * scale),
+    pos=(200, screen_height / 2 + 14),
     w=275, 
     h=50,
     content="ABOUT", 
@@ -35,7 +35,19 @@ about_button = Button(
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
     border=False)
-menu_buttons = [start_button, settings_button, about_button]
+choose_level = Button(
+    pos=(200, screen_height / 2  + 84),
+    w=275, 
+    h=50,
+    content="WORLD", 
+    content_size=30, 
+    content_color=(234, 209, 150),
+    button_color=(125, 10, 10), 
+    hover_color=(0, 34, 77),
+    border=False)
+
+
+menu_buttons = [start_button, settings_button, about_button,choose_level]
 selected_index = None
 
 # Music
@@ -48,7 +60,7 @@ logo = None
 
 def load_main_menu_images():
     global menu_backdrop, logo
-    menu_backdrop = load_image("other/main_menu_backdrop_light.png")
+    menu_backdrop = load_image("other/bg_las2-01.png")
 
 
 
@@ -83,13 +95,14 @@ def show_main_menu_screen(active_level) -> string:
     image(menu_backdrop,
           screen_width / 2,
           screen_height / 2,
-          1.0 * scale)
-    # image(logo,
-    #       screen_width / 2,
-    #       screen_height / 2 - 100 * scale,
-    #       0.85 * scale)
-    text("MULTIVERSE WORLD", int(scale * 50), (234, 209, 150),
-         screen_width / 2, screen_height / 3 - 20 * scale,
+          1.0)
+
+    rect((234, 209, 150),screen_width / 2,0 ,screen_width,442)
+    text("MULTIVERSE WORLD", int(scale * 50), (125, 10, 10),
+         screen_width / 2, screen_height / 3 - 20 * scale - 50,
+         "fonts/SFPixelate-Bold.ttf")
+    text("LINK", int(scale * 70), (125, 10, 10),
+         screen_width / 2, screen_height / 3 - 80 * scale - 50,
          "fonts/SFPixelate-Bold.ttf")
 
 
@@ -113,6 +126,10 @@ def show_main_menu_screen(active_level) -> string:
     # Update about button
     about_button.update()
     about_button.draw()
+
+    # Update level button
+    choose_level.update()
+    choose_level.draw()
     # Check if user clicked on start new game
     if start_button.clicked():
         active_level.link.hard_reset()
@@ -124,5 +141,7 @@ def show_main_menu_screen(active_level) -> string:
         return "SETTINGS"
     elif about_button.clicked():
         return "ABOUT"
+    elif choose_level.clicked():
+        return "CHOOSE_LEVEL"
 
     return "MAIN_MENU"

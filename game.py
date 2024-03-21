@@ -2,7 +2,8 @@ from GameObject.Monster.ganondorf import Ganondorf
 from Level.boss_level import BossLevel
 from Level.endscene import EndScene
 from Level.level import Level
-
+import Support.settings 
+import View.choose_level
 # Support
 from Support.settings import screen_width, screen_height
 from Support.input import *
@@ -15,9 +16,13 @@ from View.game_over_screen import show_game_over_screen
 from View.main_menu_screen import show_main_menu_screen
 from View.pause_screen import show_paused_screen
 from View.settings_screen import show_settings_screen
+
 from View.About import show_about_screen
+from View.choose_level import show_level_screen
+# from View.choose_level import choose
 from View.starting_messages_screen import show_starting_messages
 from View.transition_screen import get_next_level_index, show_transition_screen
+# from Support.settings  import active_level_index
 from jorcademy import *
 
 current_screen = "MAIN_MENU"
@@ -29,12 +34,13 @@ transition_screens = [
 ]
 
 # Levels
-active_level_index = 0
 levels = []
-
+# active_level_index = first_level
 # Transition properties
 last_recorded_score = 0
-
+Support.settings.initLevel()
+# View.choose_level.get_level()
+active_level_index = Support.settings.active_level
 # Additional timers
 pause_cooldown = 30
 pause_timer = 0
@@ -152,6 +158,7 @@ def setup() -> None:
     title("Link!! Multiverse Mario")
     screen(screen_width, screen_height)
     icon("link/link_idle.png")
+    
     # NOTE: setting up level happened in main.py
 
 
@@ -160,7 +167,7 @@ def update() -> None:
         pause_timer, \
         last_recorded_score, \
         current_screen
-
+    # active_level_index = select_level()
     last_recorded_score = levels[active_level_index].link.coins
 
     # Click delay
@@ -179,12 +186,17 @@ def update() -> None:
     if current_screen == "ABOUT":
         current_screen = show_about_screen(main_menu_screen.main_menu_music)
         return
+    # Show choose level screen
+    if current_screen == "CHOOSE_LEVEL":
+        current_screen = show_level_screen(main_menu_screen.main_menu_music)
+        active_level_index = Support.settings.active_level
+        return
     # Show main menu screen
     if current_screen == "MAIN_MENU":
         levels[active_level_index].level_music.fadeout(500)
         levels[active_level_index].level_music.stop()
         current_screen = show_main_menu_screen(levels[active_level_index])
-        active_level_index = 0
+        # active_level_index = 0
         return
     else:
         main_menu_screen.main_menu_music.fadeout(500)
@@ -213,6 +225,6 @@ def update() -> None:
 
     # Update timers
     update_timers()
-
+    print(active_level_index)
     # Update levels
     levels[active_level_index].update()

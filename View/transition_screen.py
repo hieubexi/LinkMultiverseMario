@@ -27,6 +27,7 @@ def get_next_level_index(active_level, levels) -> int:
 def get_current_level_name(current_screen, active_level, levels) -> int:
     if active_level.link.killed or current_screen == "TRANSITION_FROM_MAIN_MENU":
         return active_level.level_name
+        # return levels[get_next_level_index(active_level, levels)].level_name
     else:
         return levels[get_next_level_index(active_level, levels)].level_name
 
