@@ -26,4 +26,4 @@ screen_height = tile_size * 16
 
 def initLevel():
     global active_level
-    active_level = 3
+    active_level = 0

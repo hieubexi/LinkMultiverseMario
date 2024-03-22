@@ -128,20 +128,21 @@ def show_main_menu_screen(active_level) -> string:
     about_button.draw()
 
     # Update level button
-    choose_level.update()
-    choose_level.draw()
+    # choose_level.update()
+    # choose_level.draw()
     # Check if user clicked on start new game
     if start_button.clicked():
         active_level.link.hard_reset()
         active_level.reset()
-        return "STARTING_MESSAGES"
+        return "CHOOSE_LEVEL"
+        # return "STARTING_MESSAGES"
 
     # Check if user clicked on settings
     if settings_button.clicked():
         return "SETTINGS"
     elif about_button.clicked():
         return "ABOUT"
-    elif choose_level.clicked():
-        return "CHOOSE_LEVEL"
+    # elif choose_level.clicked():
+    #     return "CHOOSE_LEVEL"
 
     return "MAIN_MENU"

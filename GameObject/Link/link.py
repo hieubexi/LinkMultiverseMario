@@ -434,8 +434,9 @@ class Link(GameObject):
 
     def die(self, level=None):
         if not self.at_game_end:
-            self.lives -= 1
-            self.killed = True
+            # self.lives -= 1
+            # self.killed = True
+            pass
 
     def soft_reset(self):
         self.gravity = 0.8 * scale

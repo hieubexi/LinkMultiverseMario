@@ -91,10 +91,10 @@ class EndScene(Level):
     def show_subtitles(self):
         subtitles = [
             # Ending messages for the game
-            ["THE KNIGHT'S ODYSSEY HAS COME TO AN END"],
+            ["LINK!!! MULTIVERSE MARIO HAS COME TO AN END"],
             ["THANK YOU FOR PLAYING"],
-            ["A GAME BY NICKNAME"],
-            ["THANKS TO THE TESTING TEAM:", "SHOEBILL", "THE MILK MAN"],
+            ["A GAME BY NGUYEN HUU HIEU"],
+            ["THANKS TO MY TEAM:", "THAI TANG HUY - 2013329", "HO TRONG PHUC - 2014159"],
         ]
 
         # Subtitle properties
