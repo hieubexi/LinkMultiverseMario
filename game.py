@@ -225,6 +225,6 @@ def update() -> None:
 
     # Update timers
     update_timers()
-    print(active_level_index)
+    # print(active_level_index)
     # Update levels
     levels[active_level_index].update()
