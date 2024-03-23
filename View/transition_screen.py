@@ -1,5 +1,5 @@
 from Support.settings import scale, screen_height, screen_width
-from jorcademy import *
+from engine import *
 
 # Transition properties
 transition_time = 60 * 3
@@ -43,21 +43,36 @@ def show_transition_screen(active_level, levels, current_screen):
 
     # Set backdrop to black
     backdrop((0, 0, 0))
-
+    if get_current_level_name(current_screen, active_level, levels) == "END":
+        text("C'mon, You finished your quest",
+            int(40 ),
+            (255, 255, 255),
+            screen_width / 2 ,
+            screen_height / 2 - 220,
+            "fonts/pixel.ttf")
+        text("Give you Princess a kiss",
+            int(40 ),
+            (255, 255, 255),
+            screen_width / 2 ,
+            screen_height / 2 - 150,
+            "fonts/pixel.ttf")
+        image(link_image, screen_width / 2, screen_height / 2, 2 * scale)
+        
     # Display properties on screen
-    text(f"x{active_level.link.lives}",
-         int(40 * scale),
-         (255, 255, 255),
-         screen_width / 2 + 30 * scale,
-         screen_height / 2,
-         "fonts/pixel.ttf")
-    text(f"WORLD {get_current_level_name(current_screen, active_level, levels)}",
-         int(30 * scale),
-         (255, 255, 255),
-         screen_width / 2,
-         30 * scale,
-         "fonts/pixel.ttf")
-    image(link_image, screen_width / 2 - 40 * scale, screen_height / 2, 2 * scale)
+    else:
+        text(f"x{active_level.link.lives}",
+            int(40 * scale),
+            (255, 255, 255),
+            screen_width / 2 + 30 * scale,
+            screen_height / 2,
+            "fonts/pixel.ttf")
+        text(f"WORLD {get_current_level_name(current_screen, active_level, levels)}",
+            int(30 * scale),
+            (255, 255, 255),
+            screen_width / 2,
+            30 * scale,
+            "fonts/pixel.ttf")
+        image(link_image, screen_width / 2 - 40 * scale, screen_height / 2, 2 * scale)
 
     # Reset level if timer is over
     if transition_timer <= 0:

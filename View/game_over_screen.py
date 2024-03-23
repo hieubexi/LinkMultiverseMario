@@ -1,6 +1,6 @@
 import string
 from Support.settings import scale, screen_width, screen_height
-from jorcademy import *
+from engine import *
 
 # Game over screen properties
 game_over_timer = 0

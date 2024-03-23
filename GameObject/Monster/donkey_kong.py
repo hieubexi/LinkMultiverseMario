@@ -1,7 +1,7 @@
 from GameObject.Monster.Weapons.barrel import Barrel
 from GameObject.Monster.monster import Monster
 from Support.settings import scale
-from jorcademy import *
+from engine import *
 
 # Donkey Kong states
 IDLE_1 = 0

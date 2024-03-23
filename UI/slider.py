@@ -1,6 +1,6 @@
 from Support.input import *
 from Support.settings import scale
-from jorcademy import *
+from engine import *
 
 
 class Slider:

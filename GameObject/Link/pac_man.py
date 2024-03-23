@@ -1,7 +1,7 @@
 from GameObject.gameobject import GameObject
 from Support.settings import screen_width, scale
 from Support.input import *
-from jorcademy import *
+from engine import *
 
 IDLE = 0
 WALKING_1 = 1

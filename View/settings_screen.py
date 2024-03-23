@@ -1,29 +1,30 @@
 import string
+import Support.settings
 from Support.input import *
 from Support.settings import screen_width, screen_height, scale
 from UI.button import Button
 from UI.slider import Slider
-from jorcademy import *
+from engine import *
 
 volume_slider = Slider(
     screen_width / 2,
     screen_height / 2.5 + 20 * scale,
     500 * scale, 10 * scale,
-    (1, 1, 1),
+    (125, 10, 10),
     0, 1, 0.5)
 
 clouds_button = Button(
-    (screen_width / 2, screen_height / 2.2 + 140 * scale),
+    (screen_width / 2, screen_height / 2.2 + 90 * scale),
     500, 50,
-    f"CLOUDS: {str(settings.clouds).upper()}", 25, (255, 255, 255),
-    (1, 1, 1), (50, 50, 50),
+    f"CLOUDS: {str(Support.settings.clouds).upper()}", 25,(234, 209, 150),
+    (125, 10, 10), (0, 34, 77),
     True, 5, (200, 200, 200))
 
 to_main_menu_button = Button(
     (screen_width / 2, screen_height / 2.2 + 220 * scale),  # Adjust position as needed
     280, 50,  # Button size
-    "BACK TO MAIN MENU", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "BACK TO MAIN MENU", 25,(234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 
@@ -82,12 +83,12 @@ def show_settings_screen(main_menu_music) -> string:
             setting_components[i].selected = False
 
     # Show title
-    text("SETTINGS", int(scale * 50), (0, 0, 0),
+    text("SETTINGS", int(scale * 50), (125, 10, 10),
          screen_width / 2, screen_height / 2.2 - 150 * scale,
          "fonts/pixel.ttf")
 
     # Show volume slider
-    text("VOLUME", int(scale * 30), (0, 0, 0),
+    text("VOLUME", int(scale * 30), (0, 34, 77),
          screen_width / 2 - 200 * scale, screen_height / 2.2 - 55 * scale,
          "fonts/pixel.ttf")
     volume_slider.draw()
@@ -96,8 +97,8 @@ def show_settings_screen(main_menu_music) -> string:
     main_menu_music.set_volume(0.5 * settings.volume)
 
     # Show turning on/off clouds button
-    text("ENVIRONMENT", int(scale * 30), (0, 0, 0),
-         screen_width / 2 - 155 * scale, screen_height / 2.2 + 80 * scale,
+    text("ENVIRONMENT", int(scale * 30), (0, 34, 77),
+         screen_width / 2 - 155 * scale, screen_height / 2.2 + 30 * scale,
          "fonts/pixel.ttf")
     clouds_button.draw()
     clouds_button.update()
@@ -108,8 +109,10 @@ def show_settings_screen(main_menu_music) -> string:
 
     # Main menu action
     if clouds_button.clicked():
-        settings.clouds = not settings.clouds
-        clouds_button.content = "CLOUDS: " + str(settings.clouds).upper()
+        Support.settings.clouds = not Support.settings.clouds
+        clouds_button.content = "CLOUDS: " + str(Support.settings.clouds).upper()
+        # clouds_button.draw()
+        # clouds_button.update()
 
     # Go to main menu when button is clicked
     if to_main_menu_button.clicked():

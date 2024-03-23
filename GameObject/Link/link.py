@@ -7,7 +7,7 @@ from Level.Tiles.tile_data import *
 from Loot.loot import Loot
 from Support.settings import screen_width, screen_height, scale, tile_size
 from Support.input import *
-from jorcademy import *
+from engine import *
 
 # States for Link
 IDLE = 0
@@ -434,9 +434,9 @@ class Link(GameObject):
 
     def die(self, level=None):
         if not self.at_game_end:
-            # self.lives -= 1
-            # self.killed = True
-            pass
+            self.lives -= 1
+            self.killed = True
+            # pass
 
     def soft_reset(self):
         self.gravity = 0.8 * scale

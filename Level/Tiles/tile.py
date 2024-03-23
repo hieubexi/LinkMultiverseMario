@@ -1,7 +1,7 @@
 from GameObject.gameobject import GameObject
 from Level.Tiles.tile_data import *
 from Support.settings import tile_size, screen_height, screen_width
-from jorcademy import *
+from engine import *
 
 
 class Tile:

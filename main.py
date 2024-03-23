@@ -6,10 +6,10 @@ from pygame.locals import *
 
 import events
 import game
-import jorcademy as jc
+import engine as jc
 from Support.settings import fps, base_dir
 from Support import settings
-from View.main_menu_screen import load_main_menu_images
+from View.begin_screen import load_main_menu_images
 from View.transition_screen import load_transition_screen_images
 
 __debug = False

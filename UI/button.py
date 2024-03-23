@@ -1,7 +1,7 @@
 from Support.settings import scale
 from Support.input import *
 import Support.input as inp
-from jorcademy import *
+from engine import *
 
 
 class Button:

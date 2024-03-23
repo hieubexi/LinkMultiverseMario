@@ -2,7 +2,7 @@ import string
 from Support.settings import screen_width, screen_height, scale
 from Support.input import *
 from UI.button import Button
-from jorcademy import *
+from engine import *
 
 pause_button = Button(
     (screen_width / 2, screen_height / 3 + 50  ),
@@ -12,7 +12,7 @@ pause_button = Button(
     content_color=(234, 209, 150),
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
-    border=False)
+    border=True, border_size=5, border_color=(200, 200, 200) )
 
 continue_button = Button(
     (screen_width / 2, screen_height / 3 + 120 + 30 ),
@@ -22,7 +22,7 @@ continue_button = Button(
     content_color=(234, 209, 150),
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
-    border=False)
+    border=True, border_size=5, border_color=(200, 200, 200) )
 
 restart_button = Button(
     (screen_width / 2, screen_height / 3 + 190 + 60 ),
@@ -32,7 +32,7 @@ restart_button = Button(
     content_color=(234, 209, 150),
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
-    border=False)
+    border=True, border_size=5, border_color=(200, 200, 200) )
 
 pause_screen_delay = 30
 pause_screen_timer = 0

@@ -1,7 +1,7 @@
 import math
 from GameObject.Monster.monster import Monster
 from Support.settings import scale, tile_size
-from jorcademy import *
+from engine import *
 
 # States
 NOT_VULNERABLE_HORIZONTAL = 0

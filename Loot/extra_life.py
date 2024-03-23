@@ -1,6 +1,6 @@
 from Loot.loot import Loot
 from Support.settings import tile_size, scale
-from jorcademy import *
+from engine import *
 
 
 class ExtraLife(Loot):

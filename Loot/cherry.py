@@ -1,6 +1,6 @@
 from Loot.loot import Loot
 from Support.settings import scale
-from jorcademy import *
+from engine import *
 
 
 class Cherry(Loot):

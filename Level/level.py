@@ -27,7 +27,7 @@ from Loot.loot import Loot
 from Support.settings import tile_size, screen_width, screen_height, scale
 from Support.support import import_level_data, import_tile_set
 from Support.input import *
-from jorcademy import *
+from engine import *
 
 
 class Level:

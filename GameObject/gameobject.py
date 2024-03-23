@@ -1,7 +1,7 @@
 import pygame
 
 from Support.settings import screen_width, screen_height, scale
-from jorcademy import *
+from engine import *
 
 
 class GameObject:

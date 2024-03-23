@@ -1,7 +1,7 @@
 import string
 from Support.settings import scale, screen_width, screen_height
 from Support.input import *
-from jorcademy import *
+from engine import *
 
 switch_starting_message_timer = 0
 starting_message_delay = 300

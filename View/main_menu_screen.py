@@ -2,10 +2,10 @@ import string
 from Support.settings import screen_width, screen_height, scale
 from Support.input import *
 from UI.button import Button
-
+from View.begin_screen import main_menu_music
 # UI components
 start_button = Button(
-    pos=(200, screen_height / 2 - 126),
+    pos=(screen_width/2, screen_height / 2 - 70 * scale),
     w=275, 
     h=50,
     content="START NEW GAME", 
@@ -13,10 +13,10 @@ start_button = Button(
     content_color=(234, 209, 150),
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
-    border=False)
+    border=True, border_size=5, border_color=(200, 200, 200) )
 
 settings_button = Button(
-    pos=(200, screen_height / 2  - 56 ),
+    pos=(screen_width/2, screen_height / 2 - 0 * scale ),
     w=275, 
     h=50,
     content="SETTINGS", 
@@ -24,45 +24,38 @@ settings_button = Button(
     content_color=(234, 209, 150),
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
-    border=False)
+    border=True, border_size=5, border_color=(200, 200, 200) )
 about_button = Button(
-    pos=(200, screen_height / 2 + 14),
+    pos=(screen_width/2, screen_height / 2 + 70*scale),
     w=275, 
     h=50,
-    content="ABOUT", 
+    content="GAME STORY", 
     content_size=30, 
     content_color=(234, 209, 150),
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
-    border=False)
-choose_level = Button(
-    pos=(200, screen_height / 2  + 84),
+    border=True, border_size=5, border_color=(200, 200, 200) )
+controls_button = Button(
+    pos=(screen_width/2, screen_height / 2 + 140 * scale),
     w=275, 
     h=50,
-    content="WORLD", 
+    content="CONTROL", 
     content_size=30, 
     content_color=(234, 209, 150),
     button_color=(125, 10, 10), 
     hover_color=(0, 34, 77),
-    border=False)
+    border=True, border_size=5, border_color=(200, 200, 200) )
 
 
-menu_buttons = [start_button, settings_button, about_button,choose_level]
+menu_buttons = [start_button, settings_button, about_button,controls_button]
 selected_index = None
 
 # Music
-main_menu_music = load_sound("assets/music/main_menu.ogg")
+# main_menu_music = load_sound("assets/music/main_menu.ogg")
 
 # Images
 menu_backdrop = None
 logo = None
-
-
-def load_main_menu_images():
-    global menu_backdrop, logo
-    menu_backdrop = load_image("other/bg_las2-01.png")
-
-
 
 def decrease_selected_button_index():
     global selected_index
@@ -81,29 +74,26 @@ def increase_selected_button_index():
 
 def show_main_menu_screen(active_level) -> string:
     global selected_index
-
+    global main_menu_music
     # Stop music in active level
     active_level.level_music.fadeout(500)
-
+    main_menu_music.set_volume(0.5 * settings.volume)
     # Play music
-    if not main_menu_music.get_num_channels() > 0:
-        main_menu_music.play(-1)
-        main_menu_music.set_volume(0.5 * settings.volume)
+    # if not main_menu_music.get_num_channels() > 0:
+    #     main_menu_music.play(-1)
+    #     main_menu_music.set_volume(0.5 * settings.volume)
 
     # Draw menu
     backdrop((255, 255, 255))
-    image(menu_backdrop,
-          screen_width / 2,
-          screen_height / 2,
-          1.0)
+    # image(menu_backdrop,
+    #       screen_width / 2,
+    #       screen_height / 2,
+    #       1.0)
 
-    rect((234, 209, 150),screen_width / 2,0 ,screen_width,442)
-    text("MULTIVERSE WORLD", int(scale * 50), (125, 10, 10),
-         screen_width / 2, screen_height / 3 - 20 * scale - 50,
-         "fonts/SFPixelate-Bold.ttf")
-    text("LINK", int(scale * 70), (125, 10, 10),
-         screen_width / 2, screen_height / 3 - 80 * scale - 50,
-         "fonts/SFPixelate-Bold.ttf")
+    # rect((234, 209, 150),screen_width / 2,0 ,screen_width,442)
+    text("MAIN MENU", int(scale * 50), (125, 10, 10),
+         screen_width / 2, screen_height / 2 - 150 * scale,
+         "fonts/pixel.ttf")
 
 
 
@@ -128,8 +118,8 @@ def show_main_menu_screen(active_level) -> string:
     about_button.draw()
 
     # Update level button
-    # choose_level.update()
-    # choose_level.draw()
+    controls_button.update()
+    controls_button.draw()
     # Check if user clicked on start new game
     if start_button.clicked():
         active_level.link.hard_reset()
@@ -142,7 +132,7 @@ def show_main_menu_screen(active_level) -> string:
         return "SETTINGS"
     elif about_button.clicked():
         return "ABOUT"
-    # elif choose_level.clicked():
-    #     return "CHOOSE_LEVEL"
+    elif controls_button.clicked():
+        return "CONTROLS"
 
     return "MAIN_MENU"

@@ -2,7 +2,7 @@ import math
 
 from GameObject.Monster.monster import Monster
 from Support.settings import scale
-from jorcademy import *
+from engine import *
 
 
 class EnemyFireBall(Monster):

@@ -1,7 +1,7 @@
 from Level.level import Level
 from Level.triforce_key import TriforceKey
 from Support.settings import screen_width, scale
-from jorcademy import *
+from engine import *
 
 
 class BossLevel(Level):

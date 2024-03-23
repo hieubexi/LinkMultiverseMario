@@ -2,7 +2,7 @@ from GameObject.gameobject import GameObject
 from Level.level import Level
 from Level.triforce_key import TriforceKey
 from Support.settings import screen_width, screen_height, tile_size, scale
-from jorcademy import *
+from engine import *
 
 
 class EndScene(Level):
@@ -26,7 +26,7 @@ class EndScene(Level):
         self.start_subtitles_timer = 0
 
         # Switch subtitles
-        self.switch_subtitles_delay = 300
+        self.switch_subtitles_delay = 150
         self.switch_subtitles_timer = 0
 
         # Music

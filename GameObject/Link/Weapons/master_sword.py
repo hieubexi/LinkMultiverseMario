@@ -1,7 +1,7 @@
 from GameObject.gameobject import GameObject
 from Support.input import attack_key_pressed
 from Support.settings import scale
-from jorcademy import *
+from engine import *
 
 # States for Link
 IDLE = 0

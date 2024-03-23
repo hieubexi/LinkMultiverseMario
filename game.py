@@ -13,6 +13,7 @@ import Support.input as inp
 from View import main_menu_screen
 from View.controls_screen import show_controls_screen
 from View.game_over_screen import show_game_over_screen
+from View.begin_screen import show_begin_screen
 from View.main_menu_screen import show_main_menu_screen
 from View.pause_screen import show_paused_screen
 from View.settings_screen import show_settings_screen
@@ -23,9 +24,9 @@ from View.choose_level import show_level_screen
 from View.starting_messages_screen import show_starting_messages
 from View.transition_screen import get_next_level_index, show_transition_screen
 # from Support.settings  import active_level_index
-from jorcademy import *
+from engine import *
 
-current_screen = "MAIN_MENU"
+current_screen = "BEGIN_SCREEN"
 transition_screens = [
     "TRANSITION_FROM_MAIN_MENU",
     "TRANSITION",
@@ -77,10 +78,10 @@ def process_transition_game() -> None:
         return
 
     # Show controls screen
-    if current_screen == "CONTROLS":
-        current_screen = show_controls_screen()
-        return
 
+    if current_screen == "BEGIN_SCREEN":
+        current_screen = show_begin_screen()
+        return
     # Check if transitioning to main menu from EndScene
     if type(levels[active_level_index]) == EndScene and \
             levels[active_level_index].transition_requested():
@@ -107,7 +108,7 @@ def process_transition_game() -> None:
                 if levels[active_level_index].end_game_triforce.reached:
                     activate_next_level()
                 else:
-                    levels[active_level_index].reset()
+                    levels[active_level_index].reset()  
 
 
 def load_levels(game_screen) -> None:
@@ -181,10 +182,15 @@ def update() -> None:
     if current_screen == "SETTINGS":
         current_screen = show_settings_screen(main_menu_screen.main_menu_music)
         return
-    
+    if current_screen == "CONTROLS":
+        current_screen = show_controls_screen(main_menu_screen.main_menu_music)
+        return
     # Show settings screen
     if current_screen == "ABOUT":
         current_screen = show_about_screen(main_menu_screen.main_menu_music)
+        return
+    if current_screen == "BEGIN_SCREEN":
+        current_screen = show_begin_screen()
         return
     # Show choose level screen
     if current_screen == "CHOOSE_LEVEL":
@@ -225,6 +231,6 @@ def update() -> None:
 
     # Update timers
     update_timers()
-    # print(active_level_index)
+    print(settings.clouds)
     # Update levels
     levels[active_level_index].update()

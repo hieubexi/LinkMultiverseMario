@@ -5,7 +5,7 @@ from primitives import *
 
 # Game settings
 screen_size: tuple = (100, 100)
-screen_title: str = "JorCademy Engine"
+screen_title: str = "Engine"
 background_color: tuple = (0, 0, 0)
 __draw_buffer: list = []
 
@@ -19,23 +19,7 @@ color = Tuple[int, int, int]
 
 __key_status = {}
 
-# === Nintendo Switch controller input ===
 
-__nintendo_switch_button_status = {
-    0: False,  # A
-    1: False,  # B
-    2: False,  # X
-    3: False,  # Y
-    4: False,  # - (MINUS)
-    5: False,  # HOME
-    6: False,  # + (PLUS)
-    9: False,  # PLUS
-    11: False,  # D_UP
-    12: False,  # D_DOWN
-    13: False,  # D_LEFT
-    14: False,  # D_RIGHT
-}
-__nintendo_switch_joystick = {}
 
 
 # Get whether a specific key is down

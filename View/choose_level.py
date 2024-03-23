@@ -4,55 +4,55 @@ import Support.settings
 from Support.settings import screen_width, screen_height, scale
 from UI.button import Button
 
-from jorcademy import *
+from engine import *
 to_main_menu_button = Button(
     (screen_width / 2, screen_height / 2.2 + 220 * scale),  # Adjust position as needed
     280, 50,  # Button size
-    "BACK TO MAIN MENU", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "BACK TO MAIN MENU", 25, (234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 world_1_1 = Button(
     (screen_width / 4, 168 + 70),  # Adjust position as needed
     280, 50,  # Button size
-    "WORLD 1_1", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "WORLD 1_1", 25, (234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 world_1_2 = Button(
     ( 3* screen_width / 4, 168 + 70),  # Adjust position as needed
     280, 50,  # Button size
-    "WORLD 1_2", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "WORLD 1_2", 25, (234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 world_1_3 = Button(
     (screen_width / 4, 168 + 70*3),  # Adjust position as needed
     280, 50,  # Button size
-    "WORLD 1_3", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "WORLD 1_3", 25, (234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 world_1_4= Button(
     (3* screen_width / 4, 168 + 70*3),  # Adjust position as needed
     280, 50,  # Button size
-    "WORLD 1_4", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "WORLD 1_4", 25, (234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 world_1_5 = Button(
     (screen_width / 4, 168 + 70*5),  # Adjust position as needed
     280, 50,  # Button size
-    "WORLD 1_5", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "WORLD 1_5", 25, (234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 
 world_boss = Button(
     (3*screen_width / 4, 168 + 70*5),  # Adjust position as needed
     280, 50,  # Button size
-    "THE BOSS", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
+    "THE BOSS", 25, (234, 209, 150),  # Text, font size, text color
+    (125, 10, 10), (0, 34, 77),  # Button colors (normal, hover)
     True, 5, (200, 200, 200)  # Rounded corners, border size, border color
 )
 view_displayed_prev_frame = False
@@ -94,6 +94,7 @@ def show_level_screen(main_menu_music) -> string:
         level_component_index, \
         switching_timer, \
         choose
+    main_menu_music.set_volume(0.5 * settings.volume)
 
     # Show backdrop
     backdrop((255, 255, 255))
@@ -110,7 +111,7 @@ def show_level_screen(main_menu_music) -> string:
          screen_width / 2, screen_height / 2.2 - 150 * scale,
          "fonts/pixel.ttf")
 
-
+    
     # Show to main menu button
     to_main_menu_button.draw()
     to_main_menu_button.update()
@@ -139,22 +140,23 @@ def show_level_screen(main_menu_music) -> string:
         return "MAIN_MENU"
     if world_1_1.clicked():
         Support.settings.active_level = 0
-        return "STARTING_MESSAGES"
+        # return "STARTING_MESSAGES"
+        return "TRANSITION_FROM_MAIN_MENU"
     elif world_1_2.clicked():
         Support.settings.active_level = 1
-        return "STARTING_MESSAGES"
+        return "TRANSITION_FROM_MAIN_MENU"
     elif world_1_3.clicked():
         Support.settings.active_level = 2
-        return "STARTING_MESSAGES"
+        return "TRANSITION_FROM_MAIN_MENU"
     elif world_1_4.clicked():
         Support.settings.active_level = 3
-        return "STARTING_MESSAGES"
+        return "TRANSITION_FROM_MAIN_MENU"
     elif world_1_5.clicked():
         Support.settings.active_level = 4
-        return "STARTING_MESSAGES"
+        return "TRANSITION_FROM_MAIN_MENU"
     elif world_boss.clicked():
         Support.settings.active_level = 5
-        return "STARTING_MESSAGES"
+        return "TRANSITION_FROM_MAIN_MENU"
     # De-activate settings screen
     if is_key_down("esc"):
         view_displayed_prev_frame = False

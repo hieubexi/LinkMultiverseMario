@@ -1,6 +1,6 @@
 from GameObject.gameobject import GameObject
 from Support.settings import scale
-from jorcademy import *
+from engine import *
 
 
 class Triforce(GameObject):

@@ -3,7 +3,7 @@ import random
 from GameObject.Monster.Weapons.enemy_fireball import EnemyFireBall
 from GameObject.Monster.monster import Monster
 from Support.settings import scale, volume
-from jorcademy import *
+from engine import *
 
 # Ganondorf states
 IDLE = 0
