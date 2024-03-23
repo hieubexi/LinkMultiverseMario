@@ -6,12 +6,15 @@ from UI.button import Button
 from engine import *
 
 quit_button = Button(
-    (screen_width / 2, screen_height / 2 + 180 * scale),  # Adjust position as needed
-    280, 50,  # Button size
-    "QUIT", 25, (255, 255, 255),  # Text, font size, text color
-    (1, 1, 1), (50, 50, 50),  # Button colors (normal, hover)
-    True, 5, (200, 200, 200)  # Rounded corners, border size, border color
-)
+    (screen_width / 2, screen_height- 20 * scale),  # Adjust position as needed
+    80, 25,  # Button size
+    "QUIT", 20, (234, 209, 150),
+    (125, 10, 10), (0, 34, 77),
+    True, 5, (200, 200, 200))# Rounded corners, border size, border color
+
+
+
+
 menu_backdrop = None
 main_menu_music = load_sound("assets/music/main_menu.ogg")
 def load_main_menu_images():
@@ -30,22 +33,24 @@ def show_begin_screen() -> string:
           screen_width / 2,
           screen_height / 2,
           1.0)
-    text("PRESS SPACE TO BEGIN",
+    text("Press SPACE to begin",
          int(scale * 15),
          (255, 255, 255),
          screen_width / 2,
-         screen_height - 30 * scale,
+         screen_height  - 40* scale ,
          "fonts/pixel.ttf")
-    text("ESCAPE TO QUIT",
+    text("\'Q\' to Quit game",
          int(scale * 15),
          (255, 255, 255),
          screen_width / 2,
-         screen_height - 45 * scale,
+         screen_height  - 20* scale ,
          "fonts/pixel.ttf")
+
     # De-activate settings screen
     # quit_button.update()
     # quit_button.draw()
-    if is_key_down("esc") or quit_button.clicked():
+    # if quit_button.clicked():
+    if is_key_down("q"):        
         pygame.quit()
     
     # Go to game when enter is pressed

@@ -107,7 +107,7 @@ def show_level_screen(main_menu_music) -> string:
             level_components[i].selected = False
 
     # Show title
-    text("CHOOSE WORLD", int(scale * 50), (0, 0, 0),
+    text("CHOOSE WORLD", int(scale * 50),(125, 10, 10),
          screen_width / 2, screen_height / 2.2 - 150 * scale,
          "fonts/pixel.ttf")
 

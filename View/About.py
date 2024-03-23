@@ -98,10 +98,10 @@ def show_about_screen(main_menu_music) -> string:
        "He doesn't care about the princess.".upper(),
        "When the The Princess has been captured by an awful monster".upper(),
         "Mario only goes to drink instead of rescuing her".upper(),
-       "Link - who lost in this world ,fall in love with The Princess".upper(),
+       "Link - who lost in this world, fall in love with The Princess".upper(),
        "Thus, Link sets off on a quest to rescue her".upper(),
-       "With the powers of Fire Mario and Pacman and himself.".upper(),
-       "Kill them all, and save your love...".upper()
+       "With the powers of Fire Mario and Pacman.".upper(),
+       "You!!!! Kill them all, and save your love...".upper()
     ]
 
     for i in range(0, len(starting_messages)):

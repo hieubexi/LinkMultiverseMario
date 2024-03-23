@@ -134,5 +134,6 @@ def show_main_menu_screen(active_level) -> string:
         return "ABOUT"
     elif controls_button.clicked():
         return "CONTROLS"
-
+    if is_key_down("esc") :
+        return "BEGIN_SCREEN"
     return "MAIN_MENU"

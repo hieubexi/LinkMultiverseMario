@@ -6,7 +6,7 @@ from pygame.locals import *
 
 import events
 import game
-import engine as jc
+import engine as env
 from Support.settings import fps, base_dir
 from Support import settings
 from View.begin_screen import load_main_menu_images
@@ -26,7 +26,7 @@ game.setup()
 flags = pygame.DOUBLEBUF | pygame.HWSURFACE
 pygame.mixer.pre_init(44100, 16, 2, 4096)
 pygame.init()
-screen = pygame.display.set_mode(jc.screen_size, flags, 16)
+screen = pygame.display.set_mode(env.screen_size, flags, 16)
 pygame.event.set_allowed([QUIT, KEYDOWN, KEYUP])
 
 
@@ -51,7 +51,7 @@ def __debug_log(msg: str):
 
 # Render objects in draw buffer
 def __render_objects_on_screen() -> None:
-    for obj in jc.__draw_buffer:
+    for obj in env.__draw_buffer:
         obj.draw(screen)
 
 
@@ -64,9 +64,9 @@ def __handle_keyboard_events(event_args: pygame.event):
         return
     key = events.key_to_str(event_args.key)
     if event_args.type == KEYDOWN:
-        jc.__key_status[key] = True
+        env.__key_status[key] = True
     elif event_args.type == KEYUP:
-        jc.__key_status[key] = False
+        env.__key_status[key] = False
 
 
 # ==== Mouse input ==== #
@@ -78,14 +78,14 @@ def __handle_mouse_events(event_args: pygame.event):
     if event_args.type == MOUSEWHEEL:
         __debug_log("Wheel")
         if event_args.y > 0:
-            jc.__scroll_up = True
+            env.__scroll_up = True
         elif event_args.y < 0:
-            jc.__scroll_down = True
+            env.__scroll_down = True
 
     # Motion event
     if event_args.type == MOUSEMOTION:
         __debug_log("Movement")
-        jc.mouse_position = event_args.pos
+        env.mouse_position = event_args.pos
 
     # Stop execution when no mouse event detected
     if not (event_args.type == MOUSEBUTTONDOWN or event_args.type == MOUSEBUTTONUP):
@@ -98,9 +98,9 @@ def __handle_mouse_events(event_args: pygame.event):
 
     # Button event
     if event_args.type == MOUSEBUTTONDOWN:
-        jc.__mouse_status[button] = True
+        env.__mouse_status[button] = True
     elif event_args.type == MOUSEBUTTONUP:
-        jc.__mouse_status[button] = False
+        env.__mouse_status[button] = False
 
 
 # === Controller input === #
@@ -126,11 +126,11 @@ async def main():
                 running = 0
 
         # fill the screen with a color to wipe away anything from last frame
-        pygame.display.set_caption(jc.screen_title)
-        screen.fill(jc.background_color)
+        pygame.display.set_caption(env.screen_title)
+        screen.fill(env.background_color)
 
         # Update mouse position
-        jc.mouse_position = pygame.mouse.get_pos()
+        env.mouse_position = pygame.mouse.get_pos()
 
         # Get elapsed time between frames
         delta_time = clock.tick(fps) / 1000.0
@@ -142,7 +142,7 @@ async def main():
 
         # flip() the display to put your work on screen
         pygame.display.flip()
-        jc.__draw_buffer.clear()
+        env.__draw_buffer.clear()
         await asyncio.sleep(0)
 
     pygame.quit()
