@@ -6,8 +6,7 @@ Special thanks to joracademy for the beginner's source code, that helps me a lot
 0. Make sure that you already installed pygame library
 1. Clone this repository
 2. Move to Linkmutivermario folder
-3. Make
-
+3. Run the main.py script
 <pre>
 $ cd  linkmutivermario
 $ python3 main.py
