@@ -5,10 +5,10 @@ Special thanks to joracademy for the beginner's source code, that helps me a lot
 ### How to run
 0. Make sure that you already installed pygame library
 1. Clone this repository
-2. Move to Linkmutivermario folder
+2. Move to Linkmultivermario folder
 3. Run the main.py script
 <pre>
-$ cd  linkmutivermario
+$ cd  linkmultivermario
 $ python3 main.py
 </pre>
 
